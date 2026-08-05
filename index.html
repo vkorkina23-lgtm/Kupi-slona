@@ -1,33 +1,22 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Купи слона 🐘</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-font-family:Arial,sans-serif;background:linear-gradient(135deg,#fff5df,#f0e5ff);color:#211b2d}
-.card{width:min(92%,600px);padding:45px 25px;text-align:center;background:white;
-border-radius:28px;box-shadow:0 20px 60px #0002}
-.elephant{font-size:100px;margin-bottom:15px}
-h1{font-size:clamp(38px,9vw,64px);margin:0 0 15px}
-p{font-size:20px;line-height:1.45;margin:0 0 30px}
-.buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-a{font-size:18px;font-weight:bold;padding:15px 35px;border-radius:14px;text-decoration:none}
-.buy{background:#211b2d;color:white}
-.no{background:#eeeaf2;color:#211b2d}
-</style>
-</head>
-<body>
-<div class="card">
-<div class="elephant">🐘</div>
-<h1>Купи слона</h1>
-<p>Он тебе совершенно необходим.<br>Правда.</p>
-<div class="buttons">
-<a class="no" href="no.html">Нет</a>
-<a class="buy" href="https://ozon.ru/t/EI03N4v">Купить</a>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#fff5df,#f0e5ff);color:#211b2d;overflow:hidden}.card{width:min(92%,620px);padding:42px 25px;text-align:center;background:#fff;border-radius:28px;box-shadow:0 20px 60px #0002}.elephant{font-size:100px;margin-bottom:15px}h1{font-size:clamp(38px,9vw,64px);margin:0 0 15px}p{font-size:20px;line-height:1.45;margin:0 0 30px}.buttons{display:flex;gap:14px;justify-content:center;align-items:center;min-height:60px}button{font:inherit;font-size:18px;font-weight:bold;padding:15px 35px;border:0;border-radius:14px;cursor:pointer}.buy{background:#211b2d;color:#fff}.no{background:#eeeaf2;color:#211b2d}.hidden{display:none!important}#screen3 .buttons{position:relative;height:180px}#runaway{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.small{font-size:15px;color:#777;margin-top:15px}
+</style></head>
+<body><div class="card"><div class="elephant">🐘</div>
+<section id="screen1"><h1>Купи слона</h1><p>Он тебе совершенно необходим.<br>Правда.</p><div class="buttons"><button class="no" id="no1">Нет</button><button class="buy" id="buy1">Купить</button></div></section>
+<section id="screen2" class="hidden"><h1>Ты точно уверена? 🥺</h1><p>Все говорят «нет»,<br>а ты возьми и купи.</p><div class="buttons"><button class="no" id="no2">Нет</button><button class="buy" id="buy2">Купить</button></div></section>
+<section id="screen3" class="hidden"><h1>Слон уже расстроился 😭</h1><p>Ну всё. Теперь кнопка «Нет» тоже не хочет с тобой разговаривать.</p><div class="buttons"><button class="no" id="runaway">Нет</button><button class="buy" id="buy3">Купить слона</button></div><div class="small">Попробуй нажать «Нет» 👀</div></section>
 </div>
-</div>
-</body>
-</html>
+<script>
+const link="https://ozon.ru/t/EI03N4v",go=()=>location.href=link;
+buy1.onclick=go;buy2.onclick=go;buy3.onclick=go;
+no1.onclick=()=>{screen1.classList.add("hidden");screen2.classList.remove("hidden")};
+no2.onclick=()=>{screen2.classList.add("hidden");screen3.classList.remove("hidden")};
+const run=document.getElementById("runaway");
+function escape(){run.style.position="fixed";run.style.left=(Math.random()*(innerWidth-150)+20)+"px";run.style.top=(Math.random()*(innerHeight-80)+20)+"px";run.style.transform="none"}
+run.addEventListener("mouseenter",escape);run.addEventListener("touchstart",e=>{e.preventDefault();escape()},{passive:false});run.onclick=e=>{e.preventDefault();escape()};
+</script></body></html>
